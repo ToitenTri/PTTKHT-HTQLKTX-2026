@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f6">
+    <meta name="description" content="KTX An Nhiên - ứng dụng quản lý ký túc xá">
+    <title>KTX An Nhiên — Quản lý ký túc xá</title>
+    <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="KTX An Nhiên, trang tổng quan" data-view="overview">
+          <span class="brand-mark" aria-hidden="true">a</span>
+          <span class="brand-copy"><strong>an nhiên</strong><small>QUẢN LÝ KÝ TÚC XÁ</small></span>
+        </a>
+        <div class="sidebar-label">MENU CHÍNH</div>
+        <nav class="main-nav" aria-label="Điều hướng chính">
+          <button class="nav-link active" type="button" data-view="overview"><span class="nav-icon">⌂</span>Tổng quan</button>
+          <button class="nav-link" type="button" data-view="residents"><span class="nav-icon">♙</span>Sinh viên</button>
+          <button class="nav-link" type="button" data-view="rooms"><span class="nav-icon">▦</span>Phòng ở</button>
+          <button class="nav-link" type="button" data-view="payments"><span class="nav-icon">▤</span>Hóa đơn</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <div class="help-icon">✳</div>
+            <strong>Cần hỗ trợ?</strong>
+            <p>Đội ngũ quản lý luôn sẵn sàng giúp bạn.</p>
+            <a href="mailto:hotro@annhien.example">Liên hệ hỗ trợ <span>↗</span></a>
+          </div>
+          <div class="profile">
+            <div class="avatar avatar-dark">MA</div>
+            <div class="profile-copy"><strong>Minh Anh</strong><small>Quản lý ký túc xá</small></div>
+            <span class="profile-menu" aria-hidden="true">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Không gian làm việc</span><span class="crumb-separator">/</span><strong id="breadcrumb-current">Tổng quan</strong></div>
+          <div class="topbar-actions">
+            <span class="today-label" id="today-label"></span>
+            <button class="icon-button notification-button" type="button" aria-label="Thông báo"><span aria-hidden="true">♧</span><i></i></button>
+            <div class="avatar avatar-green">MA</div>
+          </div>
+        </header>
+        <div class="mobile-brand"><span class="brand-mark" aria-hidden="true">a</span><strong>an nhiên</strong></div>
+        <div class="content-wrap">
+          <div id="view" aria-live="polite"></div>
+          <footer class="page-footer">
+            <span>© 2026 An Nhiên Residence</span>
+            <button type="button" id="reset-data">Khôi phục dữ liệu mẫu</button>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="resident-dialog" id="resident-dialog" aria-labelledby="dialog-title">
+      <form id="resident-form">
+        <div class="dialog-heading">
+          <div><span class="eyebrow">HỒ SƠ NỘI TRÚ</span><h2 id="dialog-title">Thêm sinh viên</h2></div>
+          <button class="icon-button dialog-close" type="button" aria-label="Đóng">×</button>
+        </div>
+        <label>Họ và tên<input name="name" autocomplete="name" required maxlength="80" placeholder="Nguyễn Minh Anh"></label>
+        <div class="form-grid">
+          <label>Mã sinh viên<input name="studentId" required maxlength="24" placeholder="SV2026001"></label>
+          <label>Số điện thoại<input name="phone" type="tel" autocomplete="tel" required maxlength="20" placeholder="090 123 4567"></label>
+        </div>
+        <label>Địa chỉ email<input name="email" type="email" autocomplete="email" maxlength="120" placeholder="sinhvien@email.com"></label>
+        <div class="form-grid">
+          <label>Phòng ở<select name="room" required></select></label>
+          <label>Ngày nhận phòng<input name="startDate" type="date" required></label>
+        </div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <div class="dialog-actions"><button class="button button-quiet dialog-cancel" type="button">Hủy</button><button class="button button-primary" type="submit">Thêm sinh viên</button></div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
